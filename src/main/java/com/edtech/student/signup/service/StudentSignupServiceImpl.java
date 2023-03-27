@@ -8,8 +8,7 @@ public class StudentSignupServiceImpl implements StudentSignupService{
 	
 	@Override
 	public String studentSignup() {
-		return dao.studentSignup();
-		
+		return dao.studentSignup();	
 	}
 	
 }
