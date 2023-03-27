@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 	
+	// A simple endpoint to check project running status
 	@RequestMapping("/hello")
 	public String hello() {
-		return "Hello World!!!";
+		return "Hello my   World!!!";
 	}
-
 }
