@@ -1,9 +1,12 @@
 package com.edtech.student.signup.service;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
-@Service
+import com.edtech.student.signup.vo.StudentSignupVO;
+
 public interface StudentSignupService {
 
-	public String studentSignup();
+	public Map<String, String> studentSignup(StudentSignupVO vo);
 }
