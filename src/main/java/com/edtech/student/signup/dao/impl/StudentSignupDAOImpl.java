@@ -1,5 +1,12 @@
 package com.edtech.student.signup.dao.impl;
 
+import java.sql.SQLException;
+
+import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.stereotype.Repository;
+
 import com.edtech.student.signup.dao.StudentSignupDAO;
 import com.edtech.student.signup.entity.StudentSignupEntity;
 import com.edtech.student.signup.repository.StudentSignupRepository;
@@ -22,7 +29,7 @@ public class StudentSignupDAOImpl implements StudentSignupDAO{
 		entity.setEmail(vo.getEmail());
 		entity.setUserId(userId);
 		entity.setName(vo.getName());
-		entity.setPassword(org.mindrot.jbcrypt.BCrypt.hashpw(vo.getPassword(), org.mindrot.jbcrypt.BCrypt.gensalt(12)));
+		entity.setPassword(BCrypt.hashpw(vo.getPassword(), BCrypt.gensalt(12)));
 		try {
 		    repo.save(entity);
 		    return "success";
