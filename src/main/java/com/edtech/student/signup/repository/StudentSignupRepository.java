@@ -10,5 +10,4 @@ public interface StudentSignupRepository extends JpaRepository<StudentSignupEnti
 	
     @Query("SELECT S FROM StudentSignupEntity S WHERE S.email = :email")
     StudentSignupEntity emailExists(@Param("email") String email);
-
 }
