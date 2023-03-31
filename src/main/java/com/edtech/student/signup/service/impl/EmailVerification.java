@@ -1,10 +1,15 @@
 package com.edtech.student.signup.service.impl;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 import java.util.Scanner;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class EmailVerification {
 
@@ -51,7 +56,7 @@ public class EmailVerification {
     }
 
 
-    public static void main(String[] args) {
-        sendEmail("shashank996419@gmail.com", "23569");
-    }
+//    public static void main(String[] args) {
+//        sendEmail("shashank996419@gmail.com", "23569");
+//    }
 }
