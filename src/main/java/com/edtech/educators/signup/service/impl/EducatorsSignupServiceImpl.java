@@ -15,8 +15,7 @@ public class EducatorsSignupServiceImpl implements EducatorsSignupService{
 	public EducatorsSignupDAO educatorsSignupDAO;
 	
 	@Override
-	public String educatorsSignup(EducatorsSignupVO educatorVo) {
-		
+	public String educatorsSignup(EducatorsSignupVO educatorVo) {	
 		return educatorsSignupDAO.educatorsSignup(educatorVo);
 	}
 	
