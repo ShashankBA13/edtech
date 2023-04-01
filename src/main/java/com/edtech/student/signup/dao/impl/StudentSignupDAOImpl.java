@@ -4,6 +4,9 @@ import com.edtech.student.signup.dao.StudentSignupDAO;
 import com.edtech.student.signup.entity.StudentSignupEntity;
 import com.edtech.student.signup.repository.StudentSignupRepository;
 import com.edtech.student.signup.vo.StudentSignupVO;
+
+
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
@@ -22,14 +25,13 @@ public class StudentSignupDAOImpl implements StudentSignupDAO{
 		entity.setEmail(vo.getEmail());
 		entity.setUserId(userId);
 		entity.setName(vo.getName());
-		entity.setPassword(org.mindrot.jbcrypt.BCrypt.hashpw(vo.getPassword(), org.mindrot.jbcrypt.BCrypt.gensalt(12)));
+		entity.setPassword(BCrypt.hashpw(vo.getPassword(), BCrypt.gensalt(12)));
 		try {
 		    repo.save(entity);
 		    return "success";
 		} catch (DataIntegrityViolationException e) {
-		    if (e.getCause() instanceof SQLException) {
-		        SQLException sqlException = (SQLException) e.getCause();
-		        if (sqlException.getErrorCode() == 2627 || sqlException.getErrorCode() == 2601) {
+		    if (e.getCause() instanceof SQLException sqlException) {
+				if (sqlException.getErrorCode() == 2627 || sqlException.getErrorCode() == 2601) {
 		            // Unique constraint violation error
 		            String msg = "A unique constraint violation occurred: " + sqlException.getMessage();
 		            System.out.println(msg);
