@@ -1,10 +1,9 @@
 package com.edtech.educator.courseupload.dao.impl;
 
-import com.edtech.educator.courseupload.service.CourseUploadService;
+import com.edtech.educator.courseupload.dao.CourseUploadDAO;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CourseUploadDAOImpl implements CourseUploadService {
+public class CourseUploadDAOImpl implements CourseUploadDAO {
 
 }
-

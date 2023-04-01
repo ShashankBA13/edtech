@@ -2,110 +2,112 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>
-    <!DOCTYPE html>
-    <html>
+<meta charset="UTF-8">
+<title>Course Upload</title>
 
-    <head>
-      <title>Course Upload Page</title>
-      <!-- Bootstrap CDN -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Bootstrap CDN -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-      <script>
-        $(document).ready(function () {
-          var topicsCount = 1;
-
-          // Add more topics
-          $("#addTopicBtn").click(function () {
-            topicsCount++;
-            var newTopic = '<div class="panel panel-default">' +
-              '<div class="panel-heading">' +
-              '<h3 class="panel-title">Topic ' + topicsCount + '</h3>' +
-              '<button type="button" class="close deleteTopicBtn" aria-label="Delete Topic" data-topic="' + topicsCount + '">' +
-              '<span aria-hidden="true">&times;</span>' +
-              '</button>' +
-              '</div>' +
-              '<div class="panel-body">' +
-              '<div class="form-group">' +
-              '<label for="topic' + topicsCount + '">Topic Name:</label>' +
-              '<input type="text" class="form-control" id="topic' + topicsCount + '" name="topic' + topicsCount + '">' +
-              '</div>' +
-              '<div class="form-group">' +
-              '<label for="topic' + topicsCount + '-desc">Topic Description:</label>' +
-              '<textarea class="form-control" id="topic' + topicsCount + '-desc" name="topic' + topicsCount + '-desc" rows="4"></textarea>' +
-              '</div>' +
-              '<div class="form-group">' +
-              '<label for="topic' + topicsCount + '-video">Upload Topic Video:</label>' +
-              '<input type="file" class="form-control-file" id="topic' + topicsCount + '-video" name="topic' + topicsCount + '-video">' +
-              '</div>' +
-              '</div>' +
-              '</div>';
-            $("#topicsContainer").append(newTopic);
-          });
-
-          // Delete a topic
-          $(document).on("click", ".deleteTopicBtn", function () {
-            var topicNum = $(this).data("topic");
-            $(this).closest(".panel").remove();
-            // Renumber remaining topics
-            $(".panel-title").each(function (index) {
-              $(this).text("Topic " + (index + 1));
-            });
-            topicsCount--;
-          });
-        });
-      </script>
-    </head>
-
-<body>
-  <div class="container">
-    <h1>Course Upload Page</h1>
-    <p>Welcome to the course upload page! Please fill out the form below to submit your course.</p>
-
-    <form>
-      <div class="form-group">
-        <label for="title">Course Title:</label>
-        <input type="text" class="form-control" id="title" name="title">
-      </div>
-
-      <div class="form-group">
-        <label for="description">Course Description:</label>
-        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="video">Upload Course Video:</label>
-        <input type="file" class="form-control-file" id="video" name="video">
-      </div>
-
-      <h2>List of Topics</h2>
-
-      <div id="topicsContainer">
-        <div class="form-group">
-          <label for="topic1">Topic 1:</label>
-          <input type="text" class="form-control" id="topic1" name="topic1">
-          <label for="description">Topic Description:</label>
-          <textarea class="form-control" id="description" name="description" rows="4"></textarea>
-          <label for="topic1-video">Upload Topic 1 Video:</label>
-          <input type="file" class="form-control-file" id="topic1-video" name="topic1-video">
-        </div>
-      </div>
-
-      <button type="button" class="btn btn-primary" id="addTopicBtn">Add More Topics</button>
-
-      <button type="submit" class="btn btn-success">Submit Course</button>
-    </form>
-  </div>
-</body>
-
-</html>
-</title>
 </head>
 
 <body>
+	<div class="container">
+		<h1>Course Upload Page</h1>
+		<p>Welcome to the course upload page! Please fill out the form
+			below to submit your course.</p>
+
+		<form action="/educator/submit_course" enctype="multipart/form-data"
+			method="post">
+			<div class="form-group">
+				<label for="title">Course Title:</label> <input type="text"
+					class="form-control" id="title" name="title">
+			</div>
+
+			<div class="form-group">
+				<label for="description">Course Description:</label>
+				<textarea class="form-control" id="coursedescription"
+					name="description" rows="4"></textarea>
+			</div>
+
+			<div class="form-group">
+				<label for="video">Upload Course Video:</label> <input type="file"
+					class="form-control-file" id="video" name="video">
+			</div>
+
+			<h2>List of Topics</h2>
+
+			<div id="topics-container">
+				<div class="topic-group">
+					<div class="form-group">
+						<input type="text" name="topicsList[0].topicName"
+							class="form-control" placeholder="Topic Name">
+					</div>
+					<div class="form-group">
+						<input type="text" name="topicList[0].topicsDescription"
+							class="form-control" placeholder="Topic Description">
+					</div>
+					<div class="form-group">
+						<input type="file" name="topicsList[0].topicVideo"
+							class="form-control-file">
+					</div>
+					<button type="button" class="btn btn-danger delete-topic-button">Delete</button>
+					<br>
+				</div>
+			</div>
+
+			<br> <br>
+			<button type="button" class="btn btn-primary mb-3"
+				id="add-topic-button">Add More Topics</button>
+
+			<button type="submit" class="btn btn-success">Submit</button>
+		</form>
+	</div>
+
+
+	<script>
+    // Counter to keep track of the number of topic groups
+    var topicCounter = 1;
+
+    // Add a new topic input group when the "add more topics" button is clicked
+    document.getElementById("add-topic-button").addEventListener("click", function() {
+      var container = document.getElementById("topics-container");
+      var group = document.createElement("div");
+      group.classList.add("topic-group", "mb-3");
+      group.innerHTML = `
+        <div class="form-group">
+         <br> <input type="text" name="topicsList[${topicCounter}].topicName" class="form-control" placeholder="Topic Name">
+        </div>
+        <div class="form-group">
+          <input type="text" name="topicsList[${topicCounter}].topicDescription" class="form-control" placeholder="Topic Description">
+        </div>
+        <div class="form-group">
+          <input type="file" name="topicsList[${topicCounter}].topicVideo" class="form-control-file">
+        </div>
+        <button type="button" class="btn btn-danger delete-topic-button">Delete</button><br>
+      `;
+      container.appendChild(group);
+
+      // Increment the topic counter
+      topicCounter++;
+
+      // Add a click event listener to the new delete button
+      group.querySelector(".delete-topic-button").addEventListener("click", function() {
+        container.removeChild(group);
+      });
+    });
+    
+    // Add a click event listener to the delete button in the first topic group
+    document.querySelector(".delete-topic-button").addEventListener("click", function() {
+      var group = document.querySelector(".topic-group");
+      var container = document.getElementById("topics-container");
+      container.removeChild(group);
+    });
+  </script>
 
 </body>
 
