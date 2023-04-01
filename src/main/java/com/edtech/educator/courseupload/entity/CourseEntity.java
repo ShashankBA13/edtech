@@ -29,7 +29,7 @@ public class CourseEntity {
 	private Double price;
 	
 	@Column(name="duration")
-	private Double duration;
+	private String duration;
 	
 	@Column(name="course_id")
 	private String courseId;
@@ -77,11 +77,11 @@ public class CourseEntity {
 		this.price = price;
 	}
 
-	public Double getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Double duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 

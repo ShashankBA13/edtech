@@ -1,7 +1,12 @@
 package com.edtech.educator.courseupload.controller;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +19,25 @@ import com.edtech.educator.courseupload.vo.CourseBriefVO;
 @RequestMapping("/educator")
 public class CourseUploadController {
 
-    @Autowired
-    private CourseUploadService courseUploadService;
+	@Autowired
+	private CourseUploadService courseUploadService;
 
-    @PostMapping("/submit_course")
-    public String uploadCourse(@ModelAttribute CourseBriefVO vo){
+	@PostMapping("/submit_course")
+	public String uploadCourse(@ModelAttribute CourseBriefVO vo, HttpServletRequest req, Model model) {
+//		System.out.println(vo);
 
-    System.out.println(vo);
+		HttpSession session = req.getSession();
+		Integer instructorId = (Integer) session.getAttribute("instructorId");
+		
+		Map<String, String> result = courseUploadService.uploadCourse(vo, instructorId);
+		
+	
+		if(result.containsKey("Course Saved")&&result.containsKey("Topics saved")) {
+			return "Course upload success";
+		}
+		model.addAttribute(result);
+	
 
-        return "Course Upload";
-    }
+		return "Course upload failes";
+	}
 }

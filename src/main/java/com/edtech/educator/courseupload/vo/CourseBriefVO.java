@@ -9,7 +9,25 @@ public class CourseBriefVO {
 	private String title;
 	private String description;
 	private MultipartFile video;
+	private Double price;
+	private String videoPath;
 	private List<TopicsVO> topicsList;
+
+	public String getVideoPath() {
+		return videoPath;
+	}
+
+	public void setVideoPath(String videoPath) {
+		this.videoPath = videoPath;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
 	public MultipartFile getVideo() {
 		return video;
@@ -37,16 +55,10 @@ public class CourseBriefVO {
 
 	public List<TopicsVO> getTopicsList() {
 		return topicsList;
-	} 
+	}
 
 	public void setTopicsList(List<TopicsVO> topicsList) {
 		this.topicsList = topicsList;
-	}
-
-	@Override
-	public String toString() {
-		return "CourseBriefVO [title=" + title + ", description=" + description + ", video=" + video + ", topicsList="
-				+ topicsList + "]";
 	}
 
 }

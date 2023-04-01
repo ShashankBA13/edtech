@@ -7,6 +7,16 @@ public class TopicsVO {
 	private String topicName;
 	private String topicDescription;
 	private MultipartFile topicVideo;
+	private String videoPath;
+	private String duration;
+
+	public String getDuration() {
+		return duration;
+	}
+
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
 
 	public String getTopicName() {
 		return topicName;
@@ -32,10 +42,12 @@ public class TopicsVO {
 		this.topicVideo = topicVideo;
 	}
 
-	@Override
-	public String toString() {
-		return "TopicsVO [topicName=" + topicName + ", topicDescription=" + topicDescription + ", topicVideo="
-				+ topicVideo + "]/n";
+	public String getVideoPath() {	
+		return videoPath;
+	}
+	
+	public void setVideoPath(String videoPath) {
+		this.videoPath = videoPath;
 	}
 
 }
