@@ -23,21 +23,16 @@ public class CourseUploadController {
 	private CourseUploadService courseUploadService;
 
 	@PostMapping("/submit_course")
-	public String uploadCourse(@ModelAttribute CourseBriefVO vo, HttpServletRequest req, Model model) {
+	public Map<String, String> uploadCourse(@ModelAttribute CourseBriefVO vo, HttpServletRequest req, Model model) {
 //		System.out.println(vo);
 
 		HttpSession session = req.getSession();
 		Integer instructorId = (Integer) session.getAttribute("instructorId");
-		
-		Map<String, String> result = courseUploadService.uploadCourse(vo, instructorId);
-		
-	
-		if(result.containsKey("Course Saved")&&result.containsKey("Topics saved")) {
-			return "Course upload success";
-		}
-		model.addAttribute(result);
-	
 
-		return "Course upload failes";
+		Map<String, String> result = courseUploadService.uploadCourse(vo, instructorId);
+
+		model.addAttribute(result);
+
+		return result;
 	}
 }

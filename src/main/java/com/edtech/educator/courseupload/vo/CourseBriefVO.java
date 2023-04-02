@@ -10,6 +10,31 @@ public class CourseBriefVO {
 	private String description;
 	private MultipartFile video;
 	private Double price;
+	private String introVideoDuration;
+	private String courseDuration;
+	public String getIntroVideoDuration() {
+		return introVideoDuration;
+	}
+
+	@Override
+	public String toString() {
+		return "CourseBriefVO [title=" + title + ", description=" + description + ", video=" + video + ", price="
+				+ price + ", introVideoDuration=" + introVideoDuration + ", courseDuration=" + courseDuration
+				+ ", videoPath=" + videoPath + ", topicsList=" + topicsList + "]";
+	}
+
+	public void setIntroVideoDuration(String introVideoDuration) {
+		this.introVideoDuration = introVideoDuration;
+	}
+
+	public String getCourseDuration() {
+		return courseDuration;
+	}
+
+	public void setCourseDuration(String courseDuration) {
+		this.courseDuration = courseDuration;
+	}
+
 	private String videoPath;
 	private List<TopicsVO> topicsList;
 

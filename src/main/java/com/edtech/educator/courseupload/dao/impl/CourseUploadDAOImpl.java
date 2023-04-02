@@ -29,40 +29,47 @@ public class CourseUploadDAOImpl implements CourseUploadDAO {
 	@Transactional
 	public Map<String, String> uploadCourse(CourseBriefVO vo, String courseId, Integer instructorid) {
 		CourseEntity courseEntity = new CourseEntity();
-		TopicsEntity topicsEntity = new TopicsEntity();
 		
+
 		Map<String, String> map = new HashMap<>();
 
 		courseEntity.setName(vo.getTitle());
 		courseEntity.setDescription(vo.getDescription());
 		courseEntity.setCourseId(courseId);
 		courseEntity.setInstructorId(1);
-		courseEntity.setDuration("10");
+		courseEntity.setDuration(vo.getCourseDuration());
 		courseEntity.setPrice(vo.getPrice());
 		courseEntity.setVideoPath(vo.getVideoPath());
 
+		System.out.println(courseEntity);
+		System.out.println();
 		try {
 			courseRepository.save(courseEntity);
 			map.put("Course saved", courseId);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("An exception occured in course entity: " + e.getMessage());
 		}
 
 		List<TopicsVO> list = vo.getTopicsList();
 		for (TopicsVO topicsVO : list) {
+			TopicsEntity topicsEntity = new TopicsEntity();
 			topicsEntity.setCourseId(courseId);
 			topicsEntity.setTopicName(topicsVO.getTopicName());
 			topicsEntity.setDescription(topicsVO.getTopicDescription());
 			topicsEntity.setVideoPath(topicsVO.getVideoPath());
-			topicsEntity.setDuration("10");
+			topicsEntity.setDuration(topicsVO.getDuration());
+
+			System.out.println(topicsEntity);
+			System.out.println();
 
 			try {
-				topicsRepository.save(topicsEntity);
+				topicsEntity = topicsRepository.save(topicsEntity);
+				System.out.println(topicsEntity);
 				map.put("Topics saved", courseId);
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("An exception occured in topic entity: " + e.getMessage());
 			}
 		}
-			return map;
+		return map;
 	}
 }

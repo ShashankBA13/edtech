@@ -42,6 +42,12 @@ public class TopicsVO {
 		this.topicVideo = topicVideo;
 	}
 
+	@Override
+	public String toString() {
+		return "TopicsVO [topicName=" + topicName + ", topicDescription=" + topicDescription + ", topicVideo="
+				+ topicVideo + ", videoPath=" + videoPath + ", duration=" + duration + "]";
+	}
+
 	public String getVideoPath() {	
 		return videoPath;
 	}

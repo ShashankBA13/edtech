@@ -100,5 +100,12 @@ public class CourseEntity {
 	public void setVideoPath(String videoPath) {
 		this.videoPath = videoPath;
 	}
+
+	@Override
+	public String toString() {
+		return "CourseEntity [id=" + id + ", name=" + name + ", description=" + description + ", instructorId="
+				+ instructorId + ", price=" + price + ", duration=" + duration + ", courseId=" + courseId
+				+ ", videoPath=" + videoPath + "]";
+	}
 		
 }

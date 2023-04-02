@@ -75,6 +75,12 @@ public class TopicsEntity {
 		return description;
 	}
 
+	@Override
+	public String toString() {
+		return "TopicsEntity [id=" + id + ", courseId=" + courseId + ", topicName=" + topicName + ", videoPath="
+				+ videoPath + ", duration=" + duration + ", description=" + description + "]";
+	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}

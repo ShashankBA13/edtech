@@ -17,7 +17,7 @@ public class ProjectEdtechApplication {
 	@Bean
 	 CommonsMultipartResolver multipartResolver() {
 	    CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-	    multipartResolver.setMaxUploadSize(100000000); // 100 MB per file
+	    multipartResolver.setMaxUploadSize(900000000); // 300 MB per file
 	    return multipartResolver;
 	}
 
