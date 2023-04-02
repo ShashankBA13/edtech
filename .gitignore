@@ -55,3 +55,24 @@ mvnw.cmd
 
 #  Course content folder
 Course Content/
+
+# fron-end
+# Exclude package-lock.json
+src/frontend/package-lock.json
+
+# Exclude .gitkeep files
+src/frontend/src/assets/.gitkeep
+
+# Exclude TypeScript configuration files
+src/frontend/tsconfig.app.json
+src/frontend/tsconfig.json
+src/frontend/tsconfig.spec.json
+
+# Exclude VS Code config file
+src/frontend/.vscode/extensions.json
+src/frontend/.vscode/launch.json
+src/frontend/.vscode/tasks.json
+src/frontend/.vscode/.vscode/settings.json
+
+#Exclude node modules
+src/frontend/node_modules
