@@ -23,9 +23,7 @@ public class StudentSignupServiceImpl implements StudentSignupService{
 		boolean emailCheck = emailExists(vo.getEmail());
 		if(!emailCheck) {
 			String userid = generateUserId();
-			String res = dao.studentSignup(vo, userid);
-			map.put("saved", res);
-			map.put("userid", userid);
+			Map<String, String> res = dao.studentSignup(vo, userid);
 		}else {
 			map.put("email-exists", vo.getEmail()+" already exists, Please go to Login.");
 		}	
