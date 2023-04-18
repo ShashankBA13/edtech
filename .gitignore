@@ -76,3 +76,6 @@ src/frontend/.vscode/.vscode/settings.json
 
 #Exclude node modules
 src/frontend/node_modules
+
+#Exclude angular cache
+src/frontend/.angular/cache/

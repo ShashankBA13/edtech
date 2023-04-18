@@ -2,6 +2,9 @@ package com.edtech.student.signup.controller;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,10 +25,16 @@ public class StudentSignupController {
 	   returns home page if successful */
 
     @PostMapping("/signup")
-    public Map<String, String> studentSignUp(Model model, StudentSignupVO vo) {
-    	System.out.println("Welcome to Signup");
+    public Map<String, String> studentSignUp(Model model, StudentSignupVO vo, HttpServletRequest request) {
+    	System.out.println("Welcome to Signup\n");
+  
+    	System.out.println(vo.getEmail());
+    	System.out.println(vo.getName());
+    	System.out.println(vo.getPassword());
         Map<String, String> res = service.studentSignup(vo);
         if (res != null && res.containsKey("saved")) {
+        	HttpSession session = request.getSession();
+        	session.setAttribute("studentId", res.get("studentId"));
             return res;
         }
         return res;
