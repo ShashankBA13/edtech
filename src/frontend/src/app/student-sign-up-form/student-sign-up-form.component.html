@@ -1,55 +1,22 @@
-<head>
-    <title>Signup</title>
-  </head>
-  
-  <h1 class="text-center mt-3 mb-5">{{welcomeMessage}}</h1>
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mx-auto ">
-        <form class="border p-3" id="signupForm">
-          <p class="">Please Signup here</p>
-          <div class="form-group mb-3">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name">
-          </div>
-          <div class="form-group mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-          <div class="form-group mb-3">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password">
-          </div>
-          <button type="submit" class="btn btn-primary mb-3">Submit</button>
-          <p>Already have an account? <span><a href="#">Login</a></span></p>
-        </form>
-      </div>
-    </div>
+<h1 class="text-center mt-3 mb-5">{{welcomeMessage}}</h1>
+
+<form class="form" [formGroup] = "signUpForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name" formControlName = "name">
   </div>
 
-  <script>
-    $("#signupForm").validate({
-      rules: {
-        email: {
-          required: true,
-          email: true
-        },
-        password: {
-          required: true,
-          minlength: 8
-        }
-      },
-      messages: {
-        email: {
-          required: "Please enter your email address",
-          email: "Please enter a valid email address"
-        },
-        password: {
-          required: "Please enter a password",
-          minlength: "Your password must be at least 8 characters long"
-        }
-      }
-    });
-  </script>
-  
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" formControlName="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for = "password">Password:</label>
+    <input type="password" class="form-control" formControlName="password" required>
+  </div>
+
+  <br>
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>

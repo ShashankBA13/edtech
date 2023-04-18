@@ -26,7 +26,11 @@ public class StudentSignupController {
 
     @PostMapping("/signup")
     public Map<String, String> studentSignUp(Model model, StudentSignupVO vo, HttpServletRequest request) {
-    	System.out.println("Welcome to Signup");
+    	System.out.println("Welcome to Signup\n");
+  
+    	System.out.println(vo.getEmail());
+    	System.out.println(vo.getName());
+    	System.out.println(vo.getPassword());
         Map<String, String> res = service.studentSignup(vo);
         if (res != null && res.containsKey("saved")) {
         	HttpSession session = request.getSession();
